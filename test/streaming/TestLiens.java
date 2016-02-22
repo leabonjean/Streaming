@@ -274,7 +274,7 @@ public class TestLiens {
 
     }
 
-    
+   
     @Test
     public void realisateurNombreFilm() {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();

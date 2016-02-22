@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- *
+ *Entité gérant les genres
  * @author admin
  */
 @Entity
