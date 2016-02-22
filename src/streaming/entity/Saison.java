@@ -37,7 +37,7 @@ public class Saison implements Serializable {
     @OneToMany(mappedBy = "episodeSaison")
     private List<Episode> episodeCrees = new ArrayList<Episode>();
 
-    public Saison(Long id, int numSaison, Long annee, Serie serieSaison) {
+    public Saison(Long id, int numSaison, Long annee) {
         this.id = id;
         this.numSaison = numSaison;
         this.annee = annee;
@@ -46,6 +46,8 @@ public class Saison implements Serializable {
     public Saison (){
         
     }
+
+   
     
     public int getNumSaison() {
         return numSaison;

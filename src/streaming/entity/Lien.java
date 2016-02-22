@@ -42,6 +42,8 @@ public class Lien implements Serializable {
         public Lien (){
             
         }
+        
+    
     
     public String getUrl() {
         return url;

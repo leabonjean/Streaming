@@ -38,10 +38,10 @@ public class Serie implements Serializable {
     @JoinColumn(name = "Pays_Id")
     private Pays paysSerie;
 
-    public Serie(Long id, String titre, String sysnopsis, Pays paysSerie) {
+    public Serie(Long id, String titre, Pays paysSerie) {
         this.id = id;
         this.titre = titre;
-        this.sysnopsis = sysnopsis;
+     
     }
 
     public Serie(){
