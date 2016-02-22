@@ -15,7 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- *
+ * *
+ *Entité Pays
  * @author admin
  */
 @Entity
