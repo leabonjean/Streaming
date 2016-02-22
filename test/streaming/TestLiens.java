@@ -15,6 +15,8 @@ import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
 import streaming.entity.Realisateur;
+import streaming.entity.Serie;
+import streaming.exception.SynopsisNulOuVideException;
 import streaming.service.DataBaseService;
 import streaming.service.FilmService;
 import streaming.service.GenreService;
@@ -33,8 +35,8 @@ public class TestLiens {
     RealisateurService realisateurService = new RealisateurService();
     PaysService paysService = new PaysService();
 
-//    @Before
-    public void init() {
+    @Before
+    public void init() throws SynopsisNulOuVideException {
         DataService.supprimerTout();
         Genre g = new Genre(1L, "Action");
         Genre g1 = new Genre(2L, "Fantastique");
@@ -71,97 +73,97 @@ public class TestLiens {
         realisateurService.ajouter(r3);
         realisateurService.ajouter(r4);
 
-        Film f = new Film(1L, "Django Unchained", 2012L);
-        f.setPaysFilm(p1);
-        f.setGenreFilm(g);
-        f.getRealisateurFilm().add(r3);
-        g.getFilmcrees().add(f);
-        r3.getFilmCrees().add(f);
-        p1.getFilmCrees().add(f);
-        filmService.ajouter(f);
+//        Film f = new Film(1L, "Django Unchained", 2012L);
+//        f.setPaysFilm(p1);
+//        f.setGenreFilm(g);
+//        f.getRealisateurFilm().add(r3);
+//        g.getFilmcrees().add(f);
+//        r3.getFilmCrees().add(f);
+//        p1.getFilmCrees().add(f);
+//        filmService.ajouter(f);
 
-        Film f2 = new Film(2L, "Kill Bill", 2003L);
-        f2.setPaysFilm(p1);
-        f2.setGenreFilm(g);
-        f2.getRealisateurFilm().add(r3);
-        g.getFilmcrees().add(f2);
-        r3.getFilmCrees().add(f2);
-        p1.getFilmCrees().add(f2);
-        filmService.ajouter(f2);
+//        Film f2 = new Film(2L, "Kill Bill", 2003L);
+//        f2.setPaysFilm(p1);
+//        f2.setGenreFilm(g);
+//        f2.getRealisateurFilm().add(r3);
+//        g.getFilmcrees().add(f2);
+//        r3.getFilmCrees().add(f2);
+//        p1.getFilmCrees().add(f2);
+//        filmService.ajouter(f2);
 
-        Film f3 = new Film(3L, "Kill Bill2", 2004L);
-        f3.setPaysFilm(p1);
-        f3.setGenreFilm(g);
-        f3.getRealisateurFilm().add(r3);
-        g.getFilmcrees().add(f3);
-        r3.getFilmCrees().add(f3);
-        p1.getFilmCrees().add(f3);
-        filmService.ajouter(f3);
+//        Film f3 = new Film(3L, "Kill Bill2", 2004L);
+//        f3.setPaysFilm(p1);
+//        f3.setGenreFilm(g);
+//        f3.getRealisateurFilm().add(r3);
+//        g.getFilmcrees().add(f3);
+//        r3.getFilmCrees().add(f3);
+//        p1.getFilmCrees().add(f3);
+//        filmService.ajouter(f3);
 
-        Film f4 = new Film(4L, "Jackie Brown", 1997L);
-        f4.setPaysFilm(p1);
-        f4.setGenreFilm(g);
-        f4.getRealisateurFilm().add(r3);
-        g.getFilmcrees().add(f4);
-        r3.getFilmCrees().add(f4);
-        p1.getFilmCrees().add(f4);
-        filmService.ajouter(f4);
+//        Film f4 = new Film(4L, "Jackie Brown", 1997L);
+//        f4.setPaysFilm(p1);
+//        f4.setGenreFilm(g);
+//        f4.getRealisateurFilm().add(r3);
+//        g.getFilmcrees().add(f4);
+//        r3.getFilmCrees().add(f4);
+//        p1.getFilmCrees().add(f4);
+//        filmService.ajouter(f4);
 
-        Film f5 = new Film(5L, "Sin city", 2005L);
-        f5.setPaysFilm(p1);
-        f5.setGenreFilm(g1);
-        f5.getRealisateurFilm().add(r3);
-        g1.getFilmcrees().add(f5);
-        r3.getFilmCrees().add(f5);
-        p1.getFilmCrees().add(f5);
-        filmService.ajouter(f5);
+//        Film f5 = new Film(5L, "Sin city", 2005L);
+//        f5.setPaysFilm(p1);
+//        f5.setGenreFilm(g1);
+//        f5.getRealisateurFilm().add(r3);
+//        g1.getFilmcrees().add(f5);
+//        r3.getFilmCrees().add(f5);
+//        p1.getFilmCrees().add(f5);
+//        filmService.ajouter(f5);
 
-        Film f6 = new Film(6L, "Bad Taste", 1987L);
-        f6.setPaysFilm(p5);
-        f6.setGenreFilm(g1);
-        f6.getRealisateurFilm().add(r2);
-        g1.getFilmcrees().add(f6);
-        r2.getFilmCrees().add(f6);
-        p5.getFilmCrees().add(f6);
-        filmService.ajouter(f6);
+//        Film f6 = new Film(6L, "Bad Taste", 1987L);
+//        f6.setPaysFilm(p5);
+//        f6.setGenreFilm(g1);
+//        f6.getRealisateurFilm().add(r2);
+//        g1.getFilmcrees().add(f6);
+//        r2.getFilmCrees().add(f6);
+//        p5.getFilmCrees().add(f6);
+//        filmService.ajouter(f6);
 
-        Film f7 = new Film(7L, "Braindead", 1992L);
-        f7.setPaysFilm(p5);
-        f7.setGenreFilm(g1);
-        f7.getRealisateurFilm().add(r2);
-        g1.getFilmcrees().add(f7);
-        r2.getFilmCrees().add(f7);
-        p5.getFilmCrees().add(f7);
-        filmService.ajouter(f7);
+//        Film f7 = new Film(7L, "Braindead", 1992L);
+//        f7.setPaysFilm(p5);
+//        f7.setGenreFilm(g1);
+//        f7.getRealisateurFilm().add(r2);
+//        g1.getFilmcrees().add(f7);
+//        r2.getFilmCrees().add(f7);
+//        p5.getFilmCrees().add(f7);
+//        filmService.ajouter(f7);
 
-        Film f8 = new Film(8L, "Le Hobbit", 2015L);
-        f8.setPaysFilm(p5);
-        f8.setGenreFilm(g1);
-        f8.getRealisateurFilm().add(r2);
-        g1.getFilmcrees().add(f8);
-        r2.getFilmCrees().add(f8);
-        p5.getFilmCrees().add(f8);
-        filmService.ajouter(f8);
+//        Film f8 = new Film(8L, "Le Hobbit", 2015L);
+//        f8.setPaysFilm(p5);
+//        f8.setGenreFilm(g1);
+//        f8.getRealisateurFilm().add(r2);
+//        g1.getFilmcrees().add(f8);
+//        r2.getFilmCrees().add(f8);
+//        p5.getFilmCrees().add(f8);
+//        filmService.ajouter(f8);
 
-        Film f9 = new Film(9L, "Polisse", 2011L);
-        f9.setPaysFilm(p);
-        f9.setGenreFilm(g2);
-        f9.getRealisateurFilm().add(r4);
-        g2.getFilmcrees().add(f9);
-        r4.getFilmCrees().add(f9);
-        p.getFilmCrees().add(f9);
-        filmService.ajouter(f9);
+//        Film f9 = new Film(9L, "Polisse", 2011L);
+//        f9.setPaysFilm(p);
+//        f9.setGenreFilm(g2);
+//        f9.getRealisateurFilm().add(r4);
+//        g2.getFilmcrees().add(f9);
+//        r4.getFilmCrees().add(f9);
+//        p.getFilmCrees().add(f9);
+//        filmService.ajouter(f9);
 
-        Film f10 = new Film(10L, "Big Lebowski", 1998L);
-        f10.setPaysFilm(p1);
-        f10.setGenreFilm(g5);
-        f10.getRealisateurFilm().add(r);
-        f10.getRealisateurFilm().add(r1);
-        g5.getFilmcrees().add(f10);
-        r.getFilmCrees().add(f10);
-        r1.getFilmCrees().add(f10);
-        p1.getFilmCrees().add(f10);
-        filmService.ajouter(f10);
+//        Film f10 = new Film(10L, "Big Lebowski", 1998L);
+//        f10.setPaysFilm(p1);
+//        f10.setGenreFilm(g5);
+//        f10.getRealisateurFilm().add(r);
+//        f10.getRealisateurFilm().add(r1);
+//        g5.getFilmcrees().add(f10);
+//        r.getFilmCrees().add(f10);
+//        r1.getFilmCrees().add(f10);
+//        p1.getFilmCrees().add(f10);
+//        filmService.ajouter(f10);
 
         Film f11 = new Film(11L, "Avec Cesar", 2016L);
         f11.setPaysFilm(p1);
@@ -172,16 +174,21 @@ public class TestLiens {
         r.getFilmCrees().add(f11);
         r1.getFilmCrees().add(f11);
         p1.getFilmCrees().add(f11);
+        f11.setSynopsis("zut j'ai raté l'avion");
         filmService.ajouter(f11);
+        
         //System.out.println( f11.getGenreFilm().getNom());
+        
+        
     }
 
-    // @Test
+     @Test
     public void testLiens() {
 
         Persistence.createEntityManagerFactory("StreamingPU");
 
     }
+
 //    @Test
 
     public void tousLesFilms() {
@@ -275,7 +282,7 @@ public class TestLiens {
     }
 
    
-    @Test
+//    @Test
     public void realisateurNombreFilm() {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         List<Object[]> o = em.createQuery("SELECT DISTINCT COUNT(f), r.nom, r.prenom FROM Film f JOIN f.realisateurFilm r GROUP BY r  ORDER BY COUNT(f)").getResultList();

@@ -8,6 +8,7 @@ package streaming.service;
 import java.util.List;
 import streaming.dao.SerieDAO;
 import streaming.entity.Serie;
+import streaming.exception.SynopsisNulOuVideException;
 
 /**
  *
@@ -16,7 +17,11 @@ import streaming.entity.Serie;
 public class SerieService {
             private SerieDAO dao = new SerieDAO();
     
-    public void ajouter(Serie s){
+    public void ajouter(Serie s) throws SynopsisNulOuVideException {
+        if (s.getSysnopsis()== null || s.getSysnopsis()== " ") {
+            throw new SynopsisNulOuVideException();
+        }
+        s.setSysnopsis(s.getSysnopsis().replaceAll("zut", "flute"));
         dao.ajouter(s);
     }
         public List<Serie> listerTous(){
@@ -26,6 +31,16 @@ public class SerieService {
     public Serie rechercherParId(long id){
         return dao.rechercherParId(id);
     }
+    
+        public List<Serie> rechercheParGenre(String s) {
+        return dao.rechercheParGenre(s);
+    }
+
+    public List<Serie> rechercheParPays(String s) {
+        return dao.rechercheParPays(s);
+    }
+
+
     
     
 }

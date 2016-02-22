@@ -8,6 +8,7 @@ package streaming.service;
 import java.util.List;
 import streaming.dao.FilmDAO;
 import streaming.entity.Film;
+import streaming.exception.SynopsisNulOuVideException;
 
 /**
  *
@@ -17,7 +18,11 @@ public class FilmService {
 
     private FilmDAO dao = new FilmDAO();
 
-    public void ajouter(Film f) {
+    public void ajouter(Film f) throws SynopsisNulOuVideException {
+        if (f.getSynopsis() == null) {// || f.getSynopsis() == " ") {
+            throw new SynopsisNulOuVideException();
+        }
+        f.setSynopsis(f.getSynopsis().replaceAll("zut", "flute"));
         dao.ajouter(f);
     }
 
@@ -27,6 +32,18 @@ public class FilmService {
 
     public Film rechercherParId(long id) {
         return dao.rechercherParId(id);
+    }
+
+    public List<Film> rechercheParGenre(String s) {
+        return dao.rechercheParGenre(s);
+    }
+
+    public List<Film> rechercheParPays(String s) {
+        return dao.rechercheParPays(s);
+    }
+
+    public List<Film> rechercheParRealOuTitre(String s) {
+        return dao.rechercheParRealOuTitre(s);
     }
 
 }
