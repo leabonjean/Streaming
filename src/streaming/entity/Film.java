@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 
 /**
  *Entité gérant les films FILM
- * Degueulasse
+ * Degueulasse toi meme
  * @author admin
  */
 @Entity
