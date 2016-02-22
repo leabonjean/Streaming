@@ -274,10 +274,11 @@ public class TestLiens {
 
     }
 
+    
     @Test
     public void realisateurNombreFilm() {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        List<Object[]> o = em.createQuery("SELECT DISTINCT COUNT(f), r.nom, r.prenom FROM Film f JOIN f.realisateurFilm r GROUP BY r ORDER BY COUNT(f)").getResultList();
+        List<Object[]> o = em.createQuery("SELECT DISTINCT COUNT(f), r.nom, r.prenom FROM Film f JOIN f.realisateurFilm r GROUP BY r  ORDER BY COUNT(f)").getResultList();
         for ( Object var[] : o){
 
             System.out.println(var[0]+" "+var[1]+" "+var[2]);
