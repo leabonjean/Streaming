@@ -8,6 +8,7 @@ package streaming.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import streaming.entity.Film;
 import streaming.entity.Serie;
 
 /**
@@ -15,7 +16,8 @@ import streaming.entity.Serie;
  * @author admin
  */
 public class SerieDAO {
-        public void ajouter(Serie s) {
+
+    public void ajouter(Serie s) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         em.getTransaction().begin();
         em.persist(s);
@@ -32,17 +34,20 @@ public class SerieDAO {
         return em.find(Serie.class, id);
 
     }
-    
-        public List<Serie> rechercheParGenre(Long id) {
+
+    public List<Serie> rechercheParGenre(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.genreFilm.id="+id).getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f WHERE f.genreFilm.id=" + id).getResultList();
     }
 
     public List<Serie> rechercheParPays(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.paysFilm.id="+id).getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f WHERE f.paysFilm.id=" + id).getResultList();
     }
 
+    public List<Serie> rechercheParTitre(String s) {
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        return em.createQuery("SELECT s.titre FROM Serie s WHERE s.titre LIKE '%" + s + "%'").getResultList();
 
-    
+    }
 }
