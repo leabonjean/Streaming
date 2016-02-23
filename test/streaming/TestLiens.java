@@ -191,7 +191,10 @@ public class TestLiens {
         
         //System.out.println( f11.getGenreFilm().getNom());
 
+        
         Serie s = new Serie(1L, "Dexter", p1);
+        s.setPaysSerie(p1);
+        p1.getSerieCrees().add(s);
         serieService.ajouter(s);
 
         for (int sa = 1; sa < 9; sa++) {
@@ -200,6 +203,7 @@ public class TestLiens {
             saison.setNumSaison(sa);
             s.getSaisonsCrees().add(saison);
             saison.setSerieSaison(s);
+            
             saisonService.ajouter(saison);
             
             
@@ -210,7 +214,7 @@ public class TestLiens {
                 saison.getEpisodeCrees().add(episode);
                 episodeService.ajouter(episode);
                 
-                for (int l = 1; l <= sa; l++) {
+                for (long l = 1; l <= sa; l++) {
                     Lien lien = new Lien();
                     lien.setEpisodeLien(episode);
                     episode.getLienCrees().add(lien);
