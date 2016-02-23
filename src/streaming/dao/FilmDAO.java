@@ -46,7 +46,7 @@ public class FilmDAO {
 
     public List<Film> rechercheParRealOuTitre(String s) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.titre='s' OR f.realisateurFilm='s' ").getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f JOIN f.realisateurFilm r WHERE f.titre LIKE '%"+s+"%' OR r.nom LIKE '%"+s+"%'").getResultList();
 
     }
 
