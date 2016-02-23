@@ -113,7 +113,7 @@ public class JPanelListeGenre extends javax.swing.JPanel {
         //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
         em.getTransaction().commit();
 
-//        this.rafraichitJTable();
+        this.rafraichitJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

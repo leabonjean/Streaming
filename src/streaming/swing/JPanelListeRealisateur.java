@@ -7,23 +7,28 @@ package streaming.swing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.swing.table.TableModel;
-import streaming.entity.Film;
+import streaming.entity.Genre;
+import streaming.entity.Realisateur;
 
 /**
  *
  * @author admin
  */
-public class JPanelOptionFilm extends javax.swing.JPanel {
+public class JPanelListeRealisateur extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPanelListFilm
+     * Creates new form JPanelRealisateur
      */
+    public void rafraichitJTable() {
+        jtReal.setModel(new TableModelListRealisateur());
+        jtReal.repaint();
+    }
 
-    public JPanelOptionFilm() {
+    public JPanelListeRealisateur() {
         initComponents();
         rafraichitJTable();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +42,7 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtFilm = new javax.swing.JTable();
+        jtReal = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -67,7 +72,7 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
 
         add(jToolBar1, java.awt.BorderLayout.NORTH);
 
-        jtFilm.setModel(new javax.swing.table.DefaultTableModel(
+        jtReal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,39 +83,36 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtFilm);
+        jScrollPane1.setViewportView(jtReal);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void rafraichitJTable() {
-        jtFilm.setModel(new TableModelListFilm());
-        jtFilm.repaint();
-    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogFilmAjouter(null, true,this).setVisible(true);
+        new JDialogRealisateur(null, true, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int i = jtFilm.getSelectedRow();
-        if (i == -1) {
-            return;
-        }
+          int i = jtReal.getSelectedRow();
+    if (i==-1)
+        return;
+    
+    
+    
+    TableModelListRealisateur m = (TableModelListRealisateur) jtReal.getModel();
+    Realisateur r = m.getRealisateur().get(i);
+    
+    EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+    
+    em.getTransaction().begin();
+    Realisateur r2 = em.find(Realisateur.class,r.getId());
+    
+    em.remove(r2);
+    
+    
+    //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
+    em.getTransaction().commit();
 
-        TableModelListFilm m = (TableModelListFilm) jtFilm.getModel();
-        Film f = m.getFilm().get(i);
-
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-
-        em.getTransaction().begin();
-        Film f2 = em.find(Film.class, f.getId());
-
-        em.remove(f2);
-
-        //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
-        em.getTransaction().commit();
-
-        this.rafraichitJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -119,6 +121,6 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTable jtFilm;
+    private javax.swing.JTable jtReal;
     // End of variables declaration//GEN-END:variables
 }
