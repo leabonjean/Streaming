@@ -34,14 +34,14 @@ public class FilmDAO {
 
     }
 
-    public List<Film> rechercheParGenre(String s) {
+    public List<Film> rechercheParGenre(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.genreFilm='s'").getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f WHERE f.genreFilm.id="+id).getResultList();
     }
 
-    public List<Film> rechercheParPays(String s) {
+    public List<Film> rechercheParPays(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.paysFilm='s' ").getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f WHERE f.paysFilm.id="+id).getResultList();
     }
 
     public List<Film> rechercheParRealOuTitre(String s) {

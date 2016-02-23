@@ -37,7 +37,7 @@ public class Episode implements Serializable {
     @JoinColumn(name= "Saison_Id")
     private Saison episodeSaison;
 
-    public Episode(Long id, int numEpisode, String titre, Saison episodeSaison) {
+    public Episode(Long id, int numEpisode, String titre) {
         this.id = id;
         this.numEpisode = numEpisode;
         this.titre = titre;

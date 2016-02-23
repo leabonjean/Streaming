@@ -33,14 +33,14 @@ public class SerieDAO {
 
     }
     
-        public List<Serie> rechercheParGenre(String s) {
+        public List<Serie> rechercheParGenre(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.genreFilm='s'").getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f WHERE f.genreFilm.id="+id).getResultList();
     }
 
-    public List<Serie> rechercheParPays(String s) {
+    public List<Serie> rechercheParPays(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        return em.createQuery("SELECT f.titre FROM Film f WHERE f.paysFilm='s' ").getResultList();
+        return em.createQuery("SELECT f.titre FROM Film f WHERE f.paysFilm.id="+id).getResultList();
     }
 
 
