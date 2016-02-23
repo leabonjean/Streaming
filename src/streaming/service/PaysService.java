@@ -14,18 +14,23 @@ import streaming.entity.Pays;
  * @author admin
  */
 public class PaysService {
-            private PaysDAO dao = new PaysDAO();
-    
-    public void ajouter(Pays p){
+
+    private PaysDAO dao = new PaysDAO();
+
+    public void ajouter(Pays p) {
         dao.ajouter(p);
     }
-        public List<Pays> listerTous(){
+
+    public List<Pays> listerTous() {
         return dao.listerTous();
     }
-    
-    public Pays rechercherParId(long id){
+
+    public void supprimer(long id) {
+        dao.supprimer(id);
+    }
+
+    public Pays rechercherParId(long id) {
         return dao.rechercherParId(id);
     }
-    
-    
+
 }

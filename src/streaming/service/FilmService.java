@@ -29,6 +29,10 @@ public class FilmService {
     public List<Film> listerTous() {
         return dao.listerTous();
     }
+    
+    public void supprimer(long id){
+        dao.supprimer(id);
+    }
 
     public Film rechercherParId(long id) {
         return dao.rechercherParId(id);

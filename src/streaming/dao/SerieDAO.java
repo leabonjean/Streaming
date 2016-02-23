@@ -34,6 +34,13 @@ public class SerieDAO {
         return em.find(Serie.class, id);
 
     }
+    
+    public void supprimer(long id){
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Serie s WHERE s.id="+id).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public List<Serie> rechercheParGenre(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();

@@ -26,6 +26,13 @@ public class RealisateurDAO {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         return em.createQuery("SELECT r FROM Realisateur r").getResultList();
     }
+    
+    public void supprimer(long id) {
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Realisateur r WHERE r.id=" + id).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public Realisateur rechercherParId(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();

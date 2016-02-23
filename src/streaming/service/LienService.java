@@ -19,6 +19,10 @@ public class LienService {
     public void ajouter(Lien l){
         dao.ajouter(l);
     }
+    
+    public void supprimer(long id){
+        dao.supprimer(id);
+    }
         public List<Lien> listerTous(){
         return dao.listerTous();
     }

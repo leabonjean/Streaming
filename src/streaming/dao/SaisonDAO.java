@@ -21,6 +21,13 @@ public class SaisonDAO {
         em.persist(s);
         em.getTransaction().commit();
     }
+        
+        public void supprimer(long id){
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Saison sa WHERE sa.id="+id).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public List<Saison> listerTous() {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();

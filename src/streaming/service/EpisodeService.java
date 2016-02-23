@@ -14,17 +14,23 @@ import streaming.entity.Episode;
  * @author admin
  */
 public class EpisodeService {
+
     private EpisodeDAO dao = new EpisodeDAO();
-    
-    public void ajouter(Episode e){
+
+    public void ajouter(Episode e) {
         dao.ajouter(e);
     }
-        public List<Episode> listerTous(){
+    
+    public void supprimer(long id){
+        dao.supprimer(id);
+    }
+
+    public List<Episode> listerTous() {
         return dao.listerTous();
     }
-    
-    public Episode rechercherParId(long id){
+
+    public Episode rechercherParId(long id) {
         return dao.rechercherParId(id);
     }
-    
+
 }

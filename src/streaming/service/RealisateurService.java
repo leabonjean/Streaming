@@ -14,18 +14,23 @@ import streaming.entity.Realisateur;
  * @author admin
  */
 public class RealisateurService {
-            private RealisateurDAO dao = new RealisateurDAO();
-    
-    public void ajouter(Realisateur r){
+
+    private RealisateurDAO dao = new RealisateurDAO();
+
+    public void ajouter(Realisateur r) {
         dao.ajouter(r);
     }
-        public List<Realisateur> listerTous(){
+
+    public List<Realisateur> listerTous() {
         return dao.listerTous();
     }
     
-    public Realisateur rechercherParId(long id){
+    public void supprimer(long id){
+        dao.supprimer(id);
+    }
+
+    public Realisateur rechercherParId(long id) {
         return dao.rechercherParId(id);
     }
-    
-    
+
 }

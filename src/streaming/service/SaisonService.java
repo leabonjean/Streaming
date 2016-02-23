@@ -14,18 +14,23 @@ import streaming.entity.Saison;
  * @author admin
  */
 public class SaisonService {
-            private SaisonDAO dao = new SaisonDAO();
-    
-    public void ajouter(Saison s){
-        dao.ajouter(s);
+
+    private SaisonDAO dao = new SaisonDAO();
+
+    public void ajouter(Saison sa) {
+        dao.ajouter(sa);
     }
-        public List<Saison> listerTous(){
+    
+    public void supprimer(long id){
+        dao.supprimer(id);
+    }
+
+    public List<Saison> listerTous() {
         return dao.listerTous();
     }
-    
-    public Saison rechercherParId(long id){
+
+    public Saison rechercherParId(long id) {
         return dao.rechercherParId(id);
     }
-    
-    
+
 }

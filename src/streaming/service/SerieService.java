@@ -15,24 +15,30 @@ import streaming.exception.SynopsisNulOuVideException;
  * @author admin
  */
 public class SerieService {
-            private SerieDAO dao = new SerieDAO();
-    
+
+    private SerieDAO dao = new SerieDAO();
+
     public void ajouter(Serie s) throws SynopsisNulOuVideException {
-        if (s.getSysnopsis()== null || s.getSysnopsis()== " ") {
+        if (s.getSysnopsis() == null || s.getSysnopsis() == " ") {
             throw new SynopsisNulOuVideException();
         }
         s.setSysnopsis(s.getSysnopsis().replaceAll("zut", "flute"));
         dao.ajouter(s);
     }
-        public List<Serie> listerTous(){
+
+    public List<Serie> listerTous() {
         return dao.listerTous();
     }
     
-    public Serie rechercherParId(long id){
-        return dao.rechercherParId(id);
+    public void supprimer(long id){
+        dao.supprimer(id);
     }
     
-        public List<Serie> rechercheParGenre(Long id) {
+    public Serie rechercherParId(long id) {
+        return dao.rechercherParId(id);
+    }
+
+    public List<Serie> rechercheParGenre(Long id) {
         return dao.rechercheParGenre(id);
     }
 
@@ -40,7 +46,4 @@ public class SerieService {
         return dao.rechercheParPays(id);
     }
 
-
-    
-    
 }

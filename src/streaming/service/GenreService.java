@@ -14,17 +14,23 @@ import streaming.entity.Genre;
  * @author admin
  */
 public class GenreService {
-        private GenreDAO dao = new GenreDAO();
-    
-    public void ajouter(Genre g){
+
+    private GenreDAO dao = new GenreDAO();
+
+    public void ajouter(Genre g) {
         dao.ajouter(g);
     }
-        public List<Genre> listerTous(){
+
+    public List<Genre> listerTous() {
         return dao.listerTous();
     }
     
-    public Genre rechercherParId(long id){
+    public void supprimer(long id){
+        dao.supprimer(id);
+    }
+
+    public Genre rechercherParId(long id) {
         return dao.rechercherParId(id);
     }
-    
+
 }

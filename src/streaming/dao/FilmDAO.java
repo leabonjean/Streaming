@@ -33,6 +33,13 @@ public class FilmDAO {
         return em.find(Film.class, id);
 
     }
+    
+    public void supprimer(long id) {
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Film f WHERE f.id=" + id).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public List<Film> rechercheParGenre(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();

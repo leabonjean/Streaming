@@ -37,7 +37,7 @@ public class EpisodeDAO {
     public void supprimer(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Episode e WHERE e.id=" + id);
+        em.createQuery("DELETE FROM Episode e WHERE e.id=" + id).executeUpdate();
         em.getTransaction().commit();
     }
 

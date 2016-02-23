@@ -26,6 +26,13 @@ public class LienDAO {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         return em.createQuery("SELECT l FROM Lien l").getResultList();
     }
+    
+    public void supprimer(long id) {
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Lien l WHERE l.id=" + id).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public Lien rechercherParId(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();

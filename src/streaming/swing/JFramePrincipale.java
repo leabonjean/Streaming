@@ -41,9 +41,6 @@ public class JFramePrincipale extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jbFilm = new javax.swing.JButton();
         jbSerie = new javax.swing.JButton();
-        jbSaison = new javax.swing.JButton();
-        jbEpisode = new javax.swing.JButton();
-        jbLien = new javax.swing.JButton();
         jbPays = new javax.swing.JButton();
         jbRealisateur = new javax.swing.JButton();
         jbGenre = new javax.swing.JButton();
@@ -74,39 +71,6 @@ public class JFramePrincipale extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jbSerie);
-
-        jbSaison.setText("Saison");
-        jbSaison.setFocusable(false);
-        jbSaison.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbSaison.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jbSaison.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSaisonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jbSaison);
-
-        jbEpisode.setText("Episode");
-        jbEpisode.setFocusable(false);
-        jbEpisode.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbEpisode.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jbEpisode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEpisodeActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jbEpisode);
-
-        jbLien.setText("Liens");
-        jbLien.setFocusable(false);
-        jbLien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbLien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jbLien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLienActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jbLien);
 
         jbPays.setText("Pays");
         jbPays.setFocusable(false);
@@ -167,27 +131,9 @@ public class JFramePrincipale extends javax.swing.JFrame {
 
     private void jbSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSerieActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelOptionSerie();
+        jpCentral = new JPanelListeSerie();
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbSerieActionPerformed
-
-    private void jbSaisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaisonActionPerformed
-        supprimerPanneau();
-        jpCentral = new JPanelListSaison();
-        add(jpCentral, BorderLayout.CENTER);
-    }//GEN-LAST:event_jbSaisonActionPerformed
-
-    private void jbEpisodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEpisodeActionPerformed
-        supprimerPanneau();
-        jpCentral = new JPanelListeEpisode();
-        add(jpCentral, BorderLayout.CENTER);
-    }//GEN-LAST:event_jbEpisodeActionPerformed
-
-    private void jbLienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLienActionPerformed
-        supprimerPanneau();
-        jpCentral = new JPanelListeLien();
-        add(jpCentral, BorderLayout.CENTER);
-    }//GEN-LAST:event_jbLienActionPerformed
 
     private void jbPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaysActionPerformed
         supprimerPanneau();
@@ -245,13 +191,10 @@ public class JFramePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JButton jbEpisode;
     private javax.swing.JButton jbFilm;
     private javax.swing.JButton jbGenre;
-    private javax.swing.JButton jbLien;
     private javax.swing.JButton jbPays;
     private javax.swing.JButton jbRealisateur;
-    private javax.swing.JButton jbSaison;
     private javax.swing.JButton jbSerie;
     // End of variables declaration//GEN-END:variables
 }
