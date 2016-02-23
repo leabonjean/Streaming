@@ -34,12 +34,12 @@ public class FilmService {
         return dao.rechercherParId(id);
     }
 
-    public List<Film> rechercheParGenre(String s) {
-        return dao.rechercheParGenre(s);
+    public List<Film> rechercheParGenre(Long id) {
+        return dao.rechercheParGenre(id);
     }
 
-    public List<Film> rechercheParPays(String s) {
-        return dao.rechercheParPays(s);
+    public List<Film> rechercheParPays(Long id) {
+        return dao.rechercheParPays(id);
     }
 
     public List<Film> rechercheParRealOuTitre(String s) {

@@ -32,12 +32,12 @@ public class SerieService {
         return dao.rechercherParId(id);
     }
     
-        public List<Serie> rechercheParGenre(String s) {
-        return dao.rechercheParGenre(s);
+        public List<Serie> rechercheParGenre(Long id) {
+        return dao.rechercheParGenre(id);
     }
 
-    public List<Serie> rechercheParPays(String s) {
-        return dao.rechercheParPays(s);
+    public List<Serie> rechercheParPays(Long id) {
+        return dao.rechercheParPays(id);
     }
 
 
