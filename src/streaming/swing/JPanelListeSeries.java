@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.JPanel;
 import javax.swing.text.html.parser.DTDConstants;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Pays;
 import streaming.entity.Saison;
 import streaming.entity.Serie;
@@ -21,7 +22,8 @@ import streaming.service.SerieService;
  */
 public class JPanelListeSeries extends javax.swing.JPanel {
 
-    SerieService serieService = new SerieService();
+    @Autowired
+    private SerieService serieService;
     public JPanelListeSaison jpSaison = null;
     public JPanelListeSeries jpSerie = null;
     

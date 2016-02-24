@@ -7,7 +7,9 @@ package streaming.swing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Realisateur;
+import streaming.service.RealisateurService;
 
 /**
  *
@@ -18,6 +20,9 @@ public class JDialogRealisateur extends javax.swing.JDialog {
     /**
      * Creates new form JDialogRealisateur
      */
+    @Autowired
+    private RealisateurService realisateurService;
+    
     private JPanelListeRealisateur jpListeRealisateur = null ;
     
     public JDialogRealisateur(java.awt.Frame parent, boolean modal, JPanelListeRealisateur jp) {
@@ -124,11 +129,9 @@ public class JDialogRealisateur extends javax.swing.JDialog {
         Realisateur r = new Realisateur();
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
       
-        em.getTransaction().begin();
         r.setPrenom(jTextField1.getText());
         r.setNom(jTextField2.getText());
-        em.persist(r);
-        em.getTransaction().commit();
+        realisateurService.ajouter(r);
         this.setVisible(false);
         jpListeRealisateur.rafraichitJTable();
                 

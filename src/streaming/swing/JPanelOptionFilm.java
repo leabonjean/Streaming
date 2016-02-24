@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import org.eclipse.persistence.jpa.JpaHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
@@ -26,11 +27,16 @@ import streaming.service.PaysService;
  */
 public class JPanelOptionFilm extends javax.swing.JPanel {
 
-    FilmService fs = new FilmService();
-    GenreService gs = new GenreService();
-    PaysService ps = new PaysService();
-    List<Pays> lp = ps.listerTous();
-    List<Genre> lg = gs.listerTous();
+    @Autowired
+    private FilmService fs;
+    @Autowired
+    private GenreService gs;
+    @Autowired
+    private PaysService ps;
+    @Autowired
+    private List<Pays> lp;
+    @Autowired
+    private List<Genre> lg;
     JTable jtFilm2 = null;
 
     public void supprimerPanneau() {
@@ -158,20 +164,13 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
             return;
         }
 
-        TableModelListFilm m = (TableModelListFilm) jtFilm.getModel();
-        Film f = m.getFilm().get(i);
 
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-
-        em.getTransaction().begin();
-        Film f2 = em.find(Film.class, f.getId());
-
-        em.remove(f2);
-
-        //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
-        em.getTransaction().commit();
-
+        TableModelListFilm model = (TableModelListFilm) jtFilm.getModel();
+        Film f = model.getFilm().get(i);
+        fs.supprimer(f.getId());
         this.rafraichitJTable();
+        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

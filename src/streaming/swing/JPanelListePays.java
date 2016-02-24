@@ -5,6 +5,7 @@
  */
 package streaming.swing;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Pays;
 import streaming.entity.Serie;
 import streaming.service.PaysService;
@@ -14,7 +15,10 @@ import streaming.service.PaysService;
  * @author admin
  */
 public class JPanelListePays extends javax.swing.JPanel {
-    PaysService paysService = new PaysService();
+    
+    @Autowired
+    private PaysService paysService;
+    
     public void rafraichitJtable() {
         jtPays.setModel(new TableModelListePays());
         jtPays.repaint();

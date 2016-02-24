@@ -5,15 +5,18 @@
  */
 package streaming.swing;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Genre;
+import streaming.service.GenreService;
 
 /**
  *
  * @author admin
  */
 public class JPanelListeGenre extends javax.swing.JPanel {
+
+    @Autowired
+    private GenreService genreService;
 
     /**
      * Creates new form JPanelListeGenre
@@ -91,7 +94,7 @@ public class JPanelListeGenre extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogGenre(null, true,this).setVisible(true);
+        new JDialogGenre(null, true, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -100,20 +103,11 @@ public class JPanelListeGenre extends javax.swing.JPanel {
             return;
         }
 
-        TableModelListGenre m = (TableModelListGenre) jtGenre.getModel();
-        Genre g = m.getGenre().get(i);
-
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-
-        em.getTransaction().begin();
-        Genre g2 = em.find(Genre.class, g.getId());
-
-        em.remove(g2);
-
-        //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
-        em.getTransaction().commit();
-
+        TableModelListGenre model = (TableModelListGenre) jtGenre.getModel();
+        Genre g = model.getGenre().get(i);
+        genreService.supprimer(g.getId());
         this.rafraichitJTable();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

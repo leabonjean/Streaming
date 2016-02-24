@@ -10,12 +10,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import streaming.entity.Film;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import streaming.service.FilmService;
 
 /**
  *
  * @author admin
  */
 public class TableModelListFilm extends DefaultTableModel {
+    
+    @Autowired
+    private FilmService filmService;
     
     private List<Film> film = null;
     private int nbFilm = 0;
@@ -31,8 +36,7 @@ public class TableModelListFilm extends DefaultTableModel {
         String [] titres = new String []{"ID","Année","Titre"}; 
         setColumnIdentifiers(titres);
         
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        film = em.createQuery("SELECT f FROM Film f").getResultList();
+        filmService.listerTous();
         nbFilm = film.size();
         
     }
