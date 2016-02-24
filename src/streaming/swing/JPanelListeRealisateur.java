@@ -5,10 +5,9 @@
  */
 package streaming.swing;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import streaming.entity.Genre;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Realisateur;
+import streaming.service.RealisateurService;
 
 /**
  *
@@ -16,9 +15,9 @@ import streaming.entity.Realisateur;
  */
 public class JPanelListeRealisateur extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPanelRealisateur
-     */
+    @Autowired
+    public RealisateurService realService;
+
     public void rafraichitJTable() {
         jtReal.setModel(new TableModelListRealisateur());
         jtReal.repaint();
@@ -93,25 +92,27 @@ public class JPanelListeRealisateur extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          int i = jtReal.getSelectedRow();
-    if (i==-1)
-        return;
-    
-    
-    
-    TableModelListRealisateur m = (TableModelListRealisateur) jtReal.getModel();
-    Realisateur r = m.getRealisateur().get(i);
-    
-    EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-    
-    em.getTransaction().begin();
-    Realisateur r2 = em.find(Realisateur.class,r.getId());
-    
-    em.remove(r2);
-    
-    
-    //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
-    em.getTransaction().commit();
+        int i = jtReal.getSelectedRow();
+        if (i == -1) {
+            return;
+        }
+
+//        TableModelListRealisateur m = (TableModelListRealisateur) jtReal.getModel();
+//        Realisateur r = m.getRealisateur().get(i);
+//
+//        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+//
+//        em.getTransaction().begin();
+//        Realisateur r2 = em.find(Realisateur.class, r.getId());
+//
+//        em.remove(r2);
+//
+//        //ou em.createQuery("DELETE FROM Pays p WHERE p.id"+ p.getId()).executeUpdate();
+//        em.getTransaction().commit();
+        TableModelListRealisateur model = (TableModelListRealisateur) jtReal.getModel();
+        Realisateur r = model.getRealisateur().get(i);
+        realService.supprimer(r.getId());
+        this.rafraichitJTable();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

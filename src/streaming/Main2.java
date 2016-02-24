@@ -5,17 +5,21 @@
  */
 package streaming;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import streaming.swing.JFramePrincipale;
+
 /**
  *
  * @author admin
  */
 public class Main2 {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+        ApplicationContext context = new FileSystemXmlApplicationContext("file:/C:\\Users\\admin\\Documents\\Streaming\\application-context.xml");
+        context.getBean(JFramePrincipale.class).setVisible(true);
+                
     }
     
 }

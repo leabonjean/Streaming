@@ -7,11 +7,15 @@ package streaming.swing;
 
 import java.awt.Component;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
+import streaming.exception.SynopsisNulOuVideException;
 import streaming.service.FilmService;
 import streaming.service.GenreService;
 import streaming.service.PaysService;
@@ -21,18 +25,22 @@ import streaming.service.PaysService;
  * @author admin
  */
 public class JDialogFilmAjouter extends javax.swing.JDialog {
-
+    
     private JPanelOptionFilm jpListeFilm = null;
-    FilmService fs = new FilmService();
-    GenreService gs = new GenreService();
-    PaysService ps = new PaysService();
+    @Autowired
+    FilmService fs;
+    @Autowired
+    GenreService gs;
+    @Autowired
+    PaysService ps;
+    
     List<Pays> lp = ps.listerTous();
     List<Genre> lg = gs.listerTous();
 
     /**
      * Creates new form JDialogFilm
      */
-    public JDialogFilmAjouter(java.awt.Frame parent, boolean modal,JPanelOptionFilm jp) {
+    public JDialogFilmAjouter(java.awt.Frame parent, boolean modal, JPanelOptionFilm jp) {
         super(parent, modal);
         initComponents();
         initialiserComboBox();
@@ -183,23 +191,24 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Film f = new Film();
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
 
-        em.getTransaction().begin();
         f.setAnnee(Long.parseLong(jTextField2.getText()));
         f.setTitre(jTextField1.getText());
-        int i =jComboBox2.getSelectedIndex();
+        int i = jComboBox2.getSelectedIndex();
         int j = jComboBox1.getSelectedIndex();
         Genre g = lg.get(i);
         Pays p = lp.get(j);
         f.setGenreFilm(g);
         f.setPaysFilm(p);
-        em.persist(f);
-        em.getTransaction().commit();
+        try {
+            fs.ajouter(f);
+        } catch (SynopsisNulOuVideException ex) {
+            Logger.getLogger(JDialogFilmAjouter.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
         jpListeFilm.rafraichitJTable();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void initialiserComboBox() {
         jComboBox2.removeAllItems();
         jComboBox1.removeAllItems();
@@ -215,7 +224,6 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

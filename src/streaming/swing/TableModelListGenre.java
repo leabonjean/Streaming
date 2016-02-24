@@ -10,13 +10,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 import streaming.entity.Genre;
+import streaming.service.GenreService;
 
 /**
  *
  * @author admin
  */
 public class TableModelListGenre extends DefaultTableModel {
-
+    GenreService gs;
     private List<Genre> genre = null;
     private int nbGenre = 0;
 
@@ -28,9 +29,9 @@ public class TableModelListGenre extends DefaultTableModel {
 
         String[] titres = new String[]{"ID", "Nom du Genre"};
         setColumnIdentifiers(titres);
-
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        genre = em.createQuery("SELECT g FROM Genre g").getResultList();
+        gs.listerTous();
+//        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+//        genre = em.createQuery("SELECT g FROM Genre g").getResultList();
         nbGenre = genre.size();
 
     }

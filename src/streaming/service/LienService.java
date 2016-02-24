@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import streaming.dao.LienDAO;
 import streaming.entity.Lien;
@@ -16,22 +17,23 @@ import streaming.entity.Lien;
  */
 @Service
 public class LienService {
-            private LienDAO dao = new LienDAO();
-    
-    public void ajouter(Lien l){
+    @Autowired
+    private LienDAO dao;
+
+    public void ajouter(Lien l) {
         dao.ajouter(l);
     }
-    
-    public void supprimer(long id){
+
+    public void supprimer(long id) {
         dao.supprimer(id);
     }
-        public List<Lien> listerTous(){
+
+    public List<Lien> listerTous() {
         return dao.listerTous();
     }
-    
-    public Lien rechercherParId(long id){
+
+    public Lien rechercherParId(long id) {
         return dao.rechercherParId(id);
     }
-    
-    
+
 }

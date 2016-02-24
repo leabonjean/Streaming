@@ -6,10 +6,10 @@
 package streaming.swing;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Realisateur;
+import streaming.service.RealisateurService;
 
 /**
  *
@@ -17,6 +17,8 @@ import streaming.entity.Realisateur;
  */
 public class TableModelListRealisateur extends DefaultTableModel {
     
+    @Autowired
+    private RealisateurService realService;
     private List<Realisateur> realisateur = null;
     private int nbRealisateur = 0;
 
@@ -29,8 +31,10 @@ public class TableModelListRealisateur extends DefaultTableModel {
         String[] titres = new String[]{"ID", "Nom du Réalisateur","Prénom du Réalisateur"};
         setColumnIdentifiers(titres);
 
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        realisateur = em.createQuery("SELECT r FROM Realisateur r").getResultList();
+        
+        realService.listerTous();
+//        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+//        realisateur = em.createQuery("SELECT r FROM Realisateur r").getResultList();
         nbRealisateur = realisateur.size();
 
     }

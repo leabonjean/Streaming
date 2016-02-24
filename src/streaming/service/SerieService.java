@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import streaming.dao.SerieDAO;
 import streaming.entity.Serie;
@@ -17,8 +18,9 @@ import streaming.exception.SynopsisNulOuVideException;
  */
 @Service
 public class SerieService {
-
-    private SerieDAO dao = new SerieDAO();
+    
+    @Autowired
+    private SerieDAO dao;
 
     public void ajouter(Serie s) throws SynopsisNulOuVideException {
         if (s.getSysnopsis() == null || s.getSysnopsis() == " ") {

@@ -7,11 +7,13 @@ package streaming.swing;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author admin
  */
+@Component
 public class JFramePrincipale extends javax.swing.JFrame {
     JPanel jpCentral = null;
     

@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import streaming.dao.GenreDAO;
 import streaming.entity.Genre;
@@ -17,7 +18,8 @@ import streaming.entity.Genre;
 @Service
 public class GenreService {
 
-    private GenreDAO dao = new GenreDAO();
+    @Autowired
+    private GenreDAO dao;
 
     public void ajouter(Genre g) {
         dao.ajouter(g);
