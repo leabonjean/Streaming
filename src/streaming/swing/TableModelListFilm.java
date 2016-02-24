@@ -11,12 +11,14 @@ import javax.persistence.Persistence;
 import streaming.entity.Film;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.service.FilmService;
 
 /**
  *
  * @author admin
  */
+@Component
 public class TableModelListFilm extends DefaultTableModel {
     
     @Autowired

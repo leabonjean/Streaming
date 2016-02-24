@@ -25,27 +25,39 @@ import streaming.service.PaysService;
  * @author admin
  */
 public class JDialogFilmAjouter extends javax.swing.JDialog {
-    
+
     private JPanelOptionFilm jpListeFilm = null;
+
+    public void setJpListeFilm(JPanelOptionFilm jpListeFilm) {
+        this.jpListeFilm = jpListeFilm;
+    }
+    
     @Autowired
     FilmService fs;
     @Autowired
     GenreService gs;
     @Autowired
     PaysService ps;
-    
+
     List<Pays> lp = ps.listerTous();
     List<Genre> lg = gs.listerTous();
 
     /**
      * Creates new form JDialogFilm
      */
-    public JDialogFilmAjouter(java.awt.Frame parent, boolean modal, JPanelOptionFilm jp) {
-        super(parent, modal);
+    public JDialogFilmAjouter() {
+        this.setModal(true);
         initComponents();
         initialiserComboBox();
-        this.jpListeFilm = jp;
+//        this.jpListeFilm = jp;
     }
+
+//    public JDialogFilmAjouter(java.awt.Frame parent, boolean modal, JPanelOptionFilm jp) {
+//        super(parent, modal);
+//        initComponents();
+//        initialiserComboBox();
+//        this.jpListeFilm = jp;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,7 +220,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         this.setVisible(false);
         jpListeFilm.rafraichitJTable();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void initialiserComboBox() {
         jComboBox2.removeAllItems();
         jComboBox1.removeAllItems();

@@ -17,21 +17,29 @@ import streaming.service.SerieService;
  * @author admin
  */
 public class JDialogSeries extends javax.swing.JDialog {
+
     private JPanelListeSeries jpListeSerie = null;
-    
+
     @Autowired
     private SerieService serieService;
-   
 
     /**
      * Creates new form JDialogSeries
      */
-    public JDialogSeries(java.awt.Frame parent, boolean modal, JPanelListeSeries jp) {
-        super(parent, modal);
-        initComponents();
-        this.jpListeSerie = jp;
+    public void setJpListeSerie(JPanelListeSeries jpListeSerie) {
+        this.jpListeSerie = jpListeSerie;
     }
 
+    public JDialogSeries() {
+        this.setModal(true);
+        initComponents();
+    }
+
+//    public JDialogSeries(java.awt.Frame parent, boolean modal, JPanelListeSeries jp) {
+//        super(parent, modal);
+//        initComponents();
+//        this.jpListeSerie = jp;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -8,6 +8,7 @@ package streaming.swing;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -22,15 +23,23 @@ public class JDialogRealisateur extends javax.swing.JDialog {
      */
     @Autowired
     private RealisateurService realisateurService;
-    
-    private JPanelListeRealisateur jpListeRealisateur = null ;
-    
-    public JDialogRealisateur(java.awt.Frame parent, boolean modal, JPanelListeRealisateur jp) {
-        super(parent, modal);
-        initComponents();
-        this.jpListeRealisateur = jp;
+
+    private JPanelListeRealisateur jpListeRealisateur = null;
+
+    public void setJpListeRealisateur(JPanelListeRealisateur jpListeRealisateur) {
+        this.jpListeRealisateur = jpListeRealisateur;
     }
 
+    public JDialogRealisateur() {
+        this.setModal(true);
+        initComponents();
+    }
+
+//    public JDialogRealisateur(java.awt.Frame parent, boolean modal, JPanelListeRealisateur jp) {
+//        super(parent, modal);
+//        initComponents();
+//        this.jpListeRealisateur = jp;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,18 +134,17 @@ public class JDialogRealisateur extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                            
+
         Realisateur r = new Realisateur();
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-      
+
         r.setPrenom(jTextField1.getText());
         r.setNom(jTextField2.getText());
         realisateurService.ajouter(r);
         this.setVisible(false);
         jpListeRealisateur.rafraichitJTable();
-                
-    }//GEN-LAST:event_jButton1ActionPerformed
 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

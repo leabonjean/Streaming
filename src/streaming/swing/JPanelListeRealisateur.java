@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -13,13 +14,20 @@ import streaming.service.RealisateurService;
  *
  * @author admin
  */
+@Component
 public class JPanelListeRealisateur extends javax.swing.JPanel {
 
     @Autowired
     public RealisateurService realService;
+    
+    @Autowired
+    TableModelListRealisateur tableModelListRealisateur;
+    
+    @Autowired
+    JDialogRealisateur jDialogRealisateur;
 
     public void rafraichitJTable() {
-        jtReal.setModel(new TableModelListRealisateur());
+        jtReal.setModel(tableModelListRealisateur);
         jtReal.repaint();
     }
 
@@ -88,7 +96,8 @@ public class JPanelListeRealisateur extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogRealisateur(null, true, this).setVisible(true);
+        jDialogRealisateur.setJpListeRealisateur(this);
+        jDialogRealisateur.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

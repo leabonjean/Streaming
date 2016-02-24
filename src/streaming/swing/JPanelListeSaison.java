@@ -7,6 +7,7 @@ package streaming.swing;
 
 import javax.swing.JTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Saison;
 import streaming.service.SaisonService;
 
@@ -14,13 +15,17 @@ import streaming.service.SaisonService;
  *
  * @author admin
  */
+@Component
 public class JPanelListeSaison extends javax.swing.JPanel {
 
     @Autowired
     private SaisonService saisonService;
+    
+    @Autowired
+    TableModelListeSaison tableModelListeSaison;
 
     public void rafraichitJtable() {
-        jtSaison.setModel(new TableModelListeSaison());
+        jtSaison.setModel(tableModelListeSaison);
         jtSaison.repaint();
     }
 

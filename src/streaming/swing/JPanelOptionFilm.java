@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import org.eclipse.persistence.jpa.JpaHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
@@ -25,6 +26,7 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class JPanelOptionFilm extends javax.swing.JPanel {
 
     @Autowired
@@ -38,6 +40,10 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
     @Autowired
     private List<Genre> lg;
     JTable jtFilm2 = null;
+    @Autowired
+    JDialogFilmAjouter jDialogFilmAjouter;
+    @Autowired
+    TableModelListFilm tableModelListFilm;
 
     public void supprimerPanneau() {
         if (jtFilm2 == null) {
@@ -149,13 +155,14 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void rafraichitJTable() {
-        jtFilm.setModel(new TableModelListFilm());
+        jtFilm.setModel(tableModelListFilm);
         initialiserComboBox();
         jtFilm.repaint();
 
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogFilmAjouter(null, true, this).setVisible(true);
+        jDialogFilmAjouter.setJpListeFilm(this);
+        jDialogFilmAjouter.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -183,7 +190,7 @@ public class JPanelOptionFilm extends javax.swing.JPanel {
         String s = jTextField1.getText();
         List<Film> liste = em.createQuery("SELECT f FROM Film f JOIN f.genreFilm g JOIN f.paysFilm p WHERE g.nom='ge' OR p.nom='pa' OR f.titre='s'").getResultList();
         supprimerPanneau();
-        jtFilm.setModel(new TableModelListFilmRechercher(liste));
+//        jtFilm.setModel(new Tabl eModelListFilmRechercher(liste));
 //        add(jtFilm, BorderLayout.CENTER);
     }//GEN-LAST:event_jButton3ActionPerformed
     private void initialiserComboBox() {

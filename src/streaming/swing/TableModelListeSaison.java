@@ -8,6 +8,7 @@ package streaming.swing;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Saison;
 import streaming.entity.Serie;
 import streaming.service.SaisonService;
@@ -16,6 +17,7 @@ import streaming.service.SaisonService;
  *
  * @author admin
  */
+@Component
 public class TableModelListeSaison  extends DefaultTableModel{
     @Autowired
     private SaisonService saisonService;

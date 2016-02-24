@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import javax.swing.JPanel;
 import javax.swing.text.html.parser.DTDConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.entity.Saison;
 import streaming.entity.Serie;
@@ -20,10 +21,16 @@ import streaming.service.SerieService;
  *
  * @author admin
  */
+@Component
 public class JPanelListeSeries extends javax.swing.JPanel {
 
     @Autowired
     private SerieService serieService;
+    @Autowired
+    TableModelListeSerie tableModelListeSerie;
+    @Autowired
+    JDialogSeries jDialogSeries;
+    
     public JPanelListeSaison jpSaison = null;
     public JPanelListeSeries jpSerie = null;
     
@@ -43,7 +50,7 @@ public class JPanelListeSeries extends javax.swing.JPanel {
 
     
     public void rafraichitJtable() {
-        jtSerie.setModel(new TableModelListeSerie());
+        jtSerie.setModel(tableModelListeSerie);
         jtSerie.repaint();
     }
 
@@ -120,7 +127,8 @@ public class JPanelListeSeries extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogSeries(null, true, this).setVisible(true);
+        jDialogSeries.setJpListeSerie(this);
+        jDialogSeries.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
