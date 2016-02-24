@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import streaming.dao.SerieDAO;
 import streaming.entity.Serie;
 import streaming.exception.SynopsisNulOuVideException;
@@ -14,6 +15,7 @@ import streaming.exception.SynopsisNulOuVideException;
  *
  * @author admin
  */
+@Service
 public class SerieService {
 
     private SerieDAO dao = new SerieDAO();

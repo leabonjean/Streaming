@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import streaming.dao.FilmDAO;
 import streaming.entity.Film;
 import streaming.exception.SynopsisNulOuVideException;
@@ -14,6 +15,7 @@ import streaming.exception.SynopsisNulOuVideException;
  *
  * @author admin
  */
+@Service
 public class FilmService {
 
     private FilmDAO dao = new FilmDAO();

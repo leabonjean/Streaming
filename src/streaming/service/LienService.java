@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import streaming.dao.LienDAO;
 import streaming.entity.Lien;
 
@@ -13,6 +14,7 @@ import streaming.entity.Lien;
  *
  * @author admin
  */
+@Service
 public class LienService {
             private LienDAO dao = new LienDAO();
     

@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import streaming.dao.PaysDAO;
 import streaming.entity.Pays;
 
@@ -13,6 +14,7 @@ import streaming.entity.Pays;
  *
  * @author admin
  */
+@Service
 public class PaysService {
 
     private PaysDAO dao = new PaysDAO();

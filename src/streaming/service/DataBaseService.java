@@ -7,11 +7,14 @@ package streaming.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.xml.ws.ServiceMode;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author admin
  */
+@Service
 public class DataBaseService {
 
  

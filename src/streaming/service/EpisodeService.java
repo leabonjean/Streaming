@@ -6,6 +6,7 @@
 package streaming.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import streaming.dao.EpisodeDAO;
 import streaming.entity.Episode;
 
@@ -13,6 +14,7 @@ import streaming.entity.Episode;
  *
  * @author admin
  */
+@Service
 public class EpisodeService {
 
     private EpisodeDAO dao = new EpisodeDAO();
