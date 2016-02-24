@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
+import streaming.service.FilmService;
 import streaming.service.GenreService;
 import streaming.service.PaysService;
 
@@ -22,6 +23,7 @@ import streaming.service.PaysService;
 public class JDialogFilmAjouter extends javax.swing.JDialog {
 
     private JPanelOptionFilm jpListeFilm = null;
+    FilmService fs = new FilmService();
     GenreService gs = new GenreService();
     PaysService ps = new PaysService();
     List<Pays> lp = ps.listerTous();
