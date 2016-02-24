@@ -8,6 +8,7 @@ package streaming.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.stereotype.Repository;
 import streaming.entity.Film;
 import streaming.entity.Serie;
 
@@ -15,6 +16,7 @@ import streaming.entity.Serie;
  *
  * @author admin
  */
+@Repository
 public class SerieDAO {
 
     public void ajouter(Serie s) {

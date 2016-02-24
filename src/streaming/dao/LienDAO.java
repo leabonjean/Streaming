@@ -8,12 +8,14 @@ package streaming.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.stereotype.Repository;
 import streaming.entity.Lien;
 
 /**
  *
  * @author admin
  */
+@Repository
 public class LienDAO {
         public void ajouter(Lien l) {
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
