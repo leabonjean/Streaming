@@ -16,6 +16,7 @@ import streaming.entity.Genre;
  * @author admin
  */
 @Repository
+
 public class GenreDAO {
 
     public void ajouter(Genre g) {
