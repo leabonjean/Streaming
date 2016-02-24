@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.entity.Serie;
 import streaming.service.PaysService;
@@ -14,13 +15,17 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class JPanelListePays extends javax.swing.JPanel {
-    
+    @Autowired
+    public JDialogPays jdPays;
     @Autowired
     private PaysService paysService;
+    @Autowired
+    TableModelListePays tableModelListePays;
     
     public void rafraichitJtable() {
-        jtPays.setModel(new TableModelListePays());
+        jtPays.setModel(tableModelListePays);
         jtPays.repaint();
     }
 
@@ -92,7 +97,8 @@ public class JPanelListePays extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogPays(null, true, this).setVisible(true);
+        jdPays.setJpListePays(this);
+        jdPays.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

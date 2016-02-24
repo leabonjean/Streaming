@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.service.PaysService;
 
@@ -17,6 +18,7 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class TableModelListePays extends DefaultTableModel {
     @Autowired
     PaysService paysService;

@@ -7,6 +7,7 @@ package streaming.swing;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,6 +17,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class JFramePrincipale extends javax.swing.JFrame {
     JPanel jpCentral = null;
+    @Autowired
+    JPanelOptionFilm jPanelOptionFilm;
+    @Autowired
+    JPanelListeSeries jPanelListeSeries;
+    @Autowired
+    JPanelListeSaison jPanelListeSaison;
+    @Autowired
+    JPanelListeRealisateur jPanelListeRealisateur;
+    @Autowired
+    JPanelListePays jPanelListePays;
+    @Autowired
+    JPanelListeGenre jPanelListeGenre;
     
     public void supprimerPanneau(){
         if (jpCentral == null){
@@ -128,31 +141,31 @@ public class JFramePrincipale extends javax.swing.JFrame {
 
     private void jbFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFilmActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelOptionFilm();
+        jpCentral = jPanelOptionFilm;
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbFilmActionPerformed
 
     private void jbSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSerieActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelListeSeries();
+        jpCentral = jPanelListeSeries;
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbSerieActionPerformed
 
     private void jbPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaysActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelListePays();
+        jpCentral = jPanelListePays;
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbPaysActionPerformed
 
     private void jbRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRealisateurActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelListeRealisateur();
+        jpCentral = jPanelListeRealisateur;
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbRealisateurActionPerformed
 
     private void jbGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenreActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelListeGenre();
+        jpCentral = jPanelListeGenre;
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbGenreActionPerformed
 

@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Genre;
 import streaming.service.GenreService;
 
@@ -16,11 +18,15 @@ import streaming.service.GenreService;
  *
  * @author admin
  */
+@Component
 public class TableModelListGenre extends DefaultTableModel {
+    @Autowired
     GenreService gs;
     private List<Genre> genre = null;
     private int nbGenre = 0;
 
+    
+    
     public List<Genre> getGenre() {
         return genre;
     }

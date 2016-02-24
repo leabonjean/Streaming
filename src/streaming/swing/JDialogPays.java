@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.service.PaysService;
 
@@ -13,21 +14,33 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+
 public class JDialogPays extends javax.swing.JDialog {
 
-    private JPanelListePays jpListePays = null;
+    public JPanelListePays jpListePays = null;
     
     @Autowired
     private PaysService paysService;
-    /**
-     * Creates new form JDialogPays
-     */
-    public JDialogPays(java.awt.Frame parent, boolean modal, JPanelListePays jp) {
-        super(parent, modal);
-        initComponents();
-        this.jpListePays = jp;
-        
+
+    public JPanelListePays getJpListePays() {
+        return jpListePays;
     }
+
+    public void setJpListePays(JPanelListePays jpListePays) {
+        this.jpListePays = jpListePays;
+    }
+    public JDialogPays(){
+        this.setModal(true);
+    }
+    
+    
+    
+//    public JDialogPays(java.awt.Frame parent, boolean modal, JPanelListePays jp) {
+//        super(parent, modal);
+//        initComponents();
+//        this.jpListePays = jp;
+//        
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

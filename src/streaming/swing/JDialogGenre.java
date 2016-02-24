@@ -5,8 +5,6 @@
  */
 package streaming.swing;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Genre;
 import streaming.service.GenreService;
@@ -22,12 +20,26 @@ public class JDialogGenre extends javax.swing.JDialog {
     
     private JPanelListeGenre jpListeGenre = null;
 
-    public JDialogGenre(java.awt.Frame parent, boolean modal, JPanelListeGenre jp) {
-        super(parent, modal);
-        initComponents();
-        this.jpListeGenre = jp;
-
+    public JPanelListeGenre getJpListeGenre() {
+        return jpListeGenre;
     }
+
+    public void setJpListeGenre(JPanelListeGenre jpListeGenre) {
+        this.jpListeGenre = jpListeGenre;
+    }
+
+    public JDialogGenre(){
+        this.setModal(true);
+    }
+    
+//    public JDialogGenre(java.awt.Frame parent, boolean modal, JPanelListeGenre jp) {
+//        super(parent, modal);
+//        initComponents();
+//        this.jpListeGenre = jp;
+//
+//    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,13 +117,8 @@ public class JDialogGenre extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Genre g = new Genre();
-//        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-//      
-//        em.getTransaction().begin();
         g.setNom(jTextField1.getText());
-        gs.ajouter(g);
-//        em.persist(g);
-//        em.getTransaction().commit();
+        gs.ajouter(g);   
         this.setVisible(false);
         jpListeGenre.rafraichitJTable();
 

@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Genre;
 import streaming.service.GenreService;
 
@@ -13,16 +14,22 @@ import streaming.service.GenreService;
  *
  * @author admin
  */
+@Component
 public class JPanelListeGenre extends javax.swing.JPanel {
 
     @Autowired
     private GenreService genreService;
-
+    @Autowired
+    TableModelListGenre tableModelListGenre;
+    
+    
+    @Autowired
+    private JDialogGenre jdGenre;
     /**
      * Creates new form JPanelListeGenre
      */
     public void rafraichitJTable() {
-        jtGenre.setModel(new TableModelListGenre());
+        jtGenre.setModel(tableModelListGenre);
         jtGenre.repaint();
     }
 
@@ -94,7 +101,8 @@ public class JPanelListeGenre extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JDialogGenre(null, true, this).setVisible(true);
+        jdGenre.setJpListeGenre(this);
+        jdGenre.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
