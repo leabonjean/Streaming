@@ -101,6 +101,6 @@ public class JPanelListeSaison extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTable jtSaison;
+    public javax.swing.JTable jtSaison;
     // End of variables declaration//GEN-END:variables
 }

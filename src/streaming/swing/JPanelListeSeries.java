@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.JPanel;
+import javax.swing.text.html.parser.DTDConstants;
 import streaming.entity.Pays;
 import streaming.entity.Saison;
 import streaming.entity.Serie;
@@ -21,13 +22,14 @@ import streaming.service.SerieService;
 public class JPanelListeSeries extends javax.swing.JPanel {
 
     SerieService serieService = new SerieService();
-    public JPanel jpCentral = null;
+    public JPanelListeSaison jpSaison = null;
+    public JPanelListeSeries jpSerie = null;
     
     public void supprimerPanneau(){
-        if (jpCentral == null){
+        if (jpSerie == null){
             return;
         }
-        this.remove(jpCentral);
+        this.remove(jpSerie);
  
     }
     
@@ -133,11 +135,20 @@ public class JPanelListeSeries extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFramePrincipale principale = new JFramePrincipale();
-        principale.supprimerPanneau();
-       
-        jpCentral = new JPanelListeSaison();
-        add(jpCentral, BorderLayout.CENTER);
+        int j = jtSerie.getSelectedRow();
+        if (j == -1) {
+            return;
+        }
+        
+        supprimerPanneau();
+        
+        JPanelListeSaison jpSaison = new JPanelListeSaison();
+        TableModelListeSaison model2 = (TableModelListeSaison) jpSaison.getJtSaison().getModel(); //jtSaison.getModel();
+        Saison sa = model2.getSaison().get(j);
+        add(jpSaison, BorderLayout.CENTER);
+        this.rafraichitJtable();
+        jtSerie.setVisible(false);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
