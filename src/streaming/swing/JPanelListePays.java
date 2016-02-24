@@ -5,10 +5,8 @@
  */
 package streaming.swing;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.swing.table.DefaultTableModel;
 import streaming.entity.Pays;
+import streaming.entity.Serie;
 import streaming.service.PaysService;
 
 /**
@@ -98,11 +96,13 @@ public class JPanelListePays extends javax.swing.JPanel {
         if (i == -1) {
             return;
         }
-
         TableModelListePays model = (TableModelListePays) jtPays.getModel();
         Pays p = model.getPays().get(i);
         paysService.supprimer(p.getId());
         this.rafraichitJtable();
+        
+
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

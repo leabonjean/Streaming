@@ -22,6 +22,7 @@ public class JFramePrincipale extends javax.swing.JFrame {
         this.remove(jpCentral);
  
     }
+    
     /**
      * Creates new form JFramePrincipale
      */
@@ -131,7 +132,7 @@ public class JFramePrincipale extends javax.swing.JFrame {
 
     private void jbSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSerieActionPerformed
         supprimerPanneau();
-        jpCentral = new JPanelListeSerie();
+        jpCentral = new JPanelListeSeries();
         add(jpCentral, BorderLayout.CENTER);
     }//GEN-LAST:event_jbSerieActionPerformed
 

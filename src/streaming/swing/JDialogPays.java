@@ -5,9 +5,8 @@
  */
 package streaming.swing;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import streaming.entity.Pays;
+import streaming.service.PaysService;
 
 /**
  *
@@ -16,7 +15,7 @@ import streaming.entity.Pays;
 public class JDialogPays extends javax.swing.JDialog {
 
     private JPanelListePays jpListePays = null;
-
+    PaysService paysService = new PaysService();
     /**
      * Creates new form JDialogPays
      */
@@ -128,10 +127,7 @@ public class JDialogPays extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Pays pays = new Pays();
         pays.setNom(jTextField2.getText());
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        em.getTransaction().begin();
-        em.persist(pays);
-        em.getTransaction().commit();
+        paysService.ajouter(pays);
         
         this.setVisible(false);
         jpListePays.rafraichitJtable();

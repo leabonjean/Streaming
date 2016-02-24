@@ -19,14 +19,15 @@ import streaming.service.SerieService;
 
 
 public class TableModelListeSerie extends DefaultTableModel{
-    
+    private SerieService serieService = new SerieService();
     private List<Serie> serie = null;
     private int nbSerie = 0;
-    private SerieService serieService = new SerieService();
+    
+    
     public TableModelListeSerie(){
         
-        setColumnIdentifiers(new String[] {"ID", "TITRE", "SYNOPSIS"});
-        
+        setColumnIdentifiers(new String[] {"ID", "TITRE", "SYNOPSYS"});
+        serie = serieService.listerTous();
         nbSerie = serie.size();
     }
 

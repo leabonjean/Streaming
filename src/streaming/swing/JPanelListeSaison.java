@@ -5,18 +5,39 @@
  */
 package streaming.swing;
 
+import javax.swing.JTable;
+import streaming.entity.Saison;
+import streaming.service.SaisonService;
+
 /**
  *
  * @author admin
  */
 public class JPanelListeSaison extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPanelListeSaison
-     */
+    SaisonService saisonService = new SaisonService();
+
+    public void rafraichitJtable() {
+        jtSaison.setModel(new TableModelListeSaison());
+        jtSaison.repaint();
+    }
+
     public JPanelListeSaison() {
         initComponents();
+        rafraichitJtable();
+        
     }
+
+//    public JPanelListeSaison(Object object, boolean b, JPanelListeSaison jp) {
+//        TableModelListeSaison model = (TableModelListeSaison) jtSaison.getModel();
+//        saisonService.listerTous();
+//        this.rafraichitJtable();
+//    }
+
+    public JTable getJtSaison() {
+        return jtSaison;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,8 +51,9 @@ public class JPanelListeSaison extends javax.swing.JPanel {
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtSaison = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -48,9 +70,15 @@ public class JPanelListeSaison extends javax.swing.JPanel {
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton2);
 
+        jButton3.setText("Supprimer une saison");
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton3);
+
         add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtSaison.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,7 +89,7 @@ public class JPanelListeSaison extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtSaison);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -70,8 +98,9 @@ public class JPanelListeSaison extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable jtSaison;
     // End of variables declaration//GEN-END:variables
 }
