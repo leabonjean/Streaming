@@ -14,7 +14,7 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
-
+@Component
 public class JDialogPays extends javax.swing.JDialog {
 
     public JPanelListePays jpListePays = null;
@@ -29,9 +29,15 @@ public class JDialogPays extends javax.swing.JDialog {
     public void setJpListePays(JPanelListePays jpListePays) {
         this.jpListePays = jpListePays;
     }
-    public JDialogPays(){
+   
+    public void initialiser(){
         this.setModal(true);
+        initComponents();
     }
+    
+//    public JDialogPays(){
+//        
+//    }
     
     
     
@@ -144,9 +150,8 @@ public class JDialogPays extends javax.swing.JDialog {
         Pays pays = new Pays();
         pays.setNom(jTextField2.getText());
         paysService.ajouter(pays);
-        
         this.setVisible(false);
-        jpListePays.rafraichitJtable();
+//        jpListePays.rafraichitJtable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -29,11 +29,15 @@ public class TableModelListeSerie extends DefaultTableModel{
     private int nbSerie = 0;
     
     
+    public void initialiser(){
+        serie = serieService.listerTous();
+        nbSerie = serie.size();
+    }
+    
     public TableModelListeSerie(){
         
         setColumnIdentifiers(new String[] {"ID", "TITRE", "SYNOPSYS"});
-        serie = serieService.listerTous();
-        nbSerie = serie.size();
+        
     }
 
     @Override

@@ -19,6 +19,7 @@ public class JPanelListeGenre extends javax.swing.JPanel {
 
     @Autowired
     private GenreService genreService;
+    
     @Autowired
     TableModelListGenre tableModelListGenre;
     
@@ -29,6 +30,7 @@ public class JPanelListeGenre extends javax.swing.JPanel {
      * Creates new form JPanelListeGenre
      */
     public void rafraichitJTable() {
+        tableModelListGenre.initialiser();
         jtGenre.setModel(tableModelListGenre);
         jtGenre.repaint();
     }
@@ -38,7 +40,6 @@ public class JPanelListeGenre extends javax.swing.JPanel {
      */
     public JPanelListeGenre() {
         initComponents();
-        rafraichitJTable();
     }
 
     /**
@@ -101,6 +102,7 @@ public class JPanelListeGenre extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jdGenre.initialiser();
         jdGenre.setJpListeGenre(this);
         jdGenre.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

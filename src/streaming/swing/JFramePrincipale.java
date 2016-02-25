@@ -60,7 +60,6 @@ public class JFramePrincipale extends javax.swing.JFrame {
         jbPays = new javax.swing.JButton();
         jbRealisateur = new javax.swing.JButton();
         jbGenre = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,19 +122,6 @@ public class JFramePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -143,30 +129,44 @@ public class JFramePrincipale extends javax.swing.JFrame {
         supprimerPanneau();
         jpCentral = jPanelOptionFilm;
         add(jpCentral, BorderLayout.CENTER);
+        jPanelOptionFilm.rafraichitJTable();
+//        
+        this.pack();
     }//GEN-LAST:event_jbFilmActionPerformed
 
     private void jbSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSerieActionPerformed
         supprimerPanneau();
         jpCentral = jPanelListeSeries;
         add(jpCentral, BorderLayout.CENTER);
+      jPanelListeSeries.rafraichitJtable();
+      this.pack();
     }//GEN-LAST:event_jbSerieActionPerformed
 
     private void jbPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaysActionPerformed
         supprimerPanneau();
+        
         jpCentral = jPanelListePays;
         add(jpCentral, BorderLayout.CENTER);
+        
+        jPanelListePays.rafraichitJtable();
+        this.pack();
     }//GEN-LAST:event_jbPaysActionPerformed
 
     private void jbRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRealisateurActionPerformed
         supprimerPanneau();
         jpCentral = jPanelListeRealisateur;
         add(jpCentral, BorderLayout.CENTER);
+        jPanelListeRealisateur.rafraichitJTable();
+        this.pack();
     }//GEN-LAST:event_jbRealisateurActionPerformed
 
     private void jbGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenreActionPerformed
         supprimerPanneau();
         jpCentral = jPanelListeGenre;
         add(jpCentral, BorderLayout.CENTER);
+        jPanelListeGenre.rafraichitJTable();
+        
+        this.pack();
     }//GEN-LAST:event_jbGenreActionPerformed
 
     /**
@@ -205,7 +205,6 @@ public class JFramePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton jbFilm;
     private javax.swing.JButton jbGenre;

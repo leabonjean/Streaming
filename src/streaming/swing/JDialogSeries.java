@@ -8,6 +8,7 @@ package streaming.swing;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Serie;
 import streaming.exception.SynopsisNulOuVideException;
 import streaming.service.SerieService;
@@ -16,6 +17,7 @@ import streaming.service.SerieService;
  *
  * @author admin
  */
+@Component
 public class JDialogSeries extends javax.swing.JDialog {
 
     private JPanelListeSeries jpListeSerie = null;

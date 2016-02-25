@@ -16,6 +16,7 @@ import streaming.service.RealisateurService;
  *
  * @author admin
  */
+@Component
 public class JDialogRealisateur extends javax.swing.JDialog {
 
     /**

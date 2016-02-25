@@ -32,25 +32,27 @@ public class TableModelListFilm extends DefaultTableModel {
     }
     
     
-    
+    public void initialiser(){
+        film = filmService.listerTous();
+        nbFilm = film.size();
+    }
     public TableModelListFilm () {
         
         String [] titres = new String []{"ID","Année","Titre"}; 
         setColumnIdentifiers(titres);
         
-        filmService.listerTous();
-        nbFilm = film.size();
+//        
         
     }
 
 
-//    @Override
+    @Override
     public int getRowCount() {
         return nbFilm;
     }
 
     
-//    @Override
+    @Override
     public Object getValueAt(int row, int column) {
         
         Film f = film.get(row);

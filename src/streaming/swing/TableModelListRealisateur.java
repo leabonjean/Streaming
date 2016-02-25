@@ -28,16 +28,21 @@ public class TableModelListRealisateur extends DefaultTableModel {
         return realisateur;
     }
 
+    public void initialiser(){
+        realisateur = realService.listerTous();
+        nbRealisateur = realisateur.size();
+    }
+    
     public TableModelListRealisateur() {
 
         String[] titres = new String[]{"ID", "Nom du Réalisateur","Prénom du Réalisateur"};
         setColumnIdentifiers(titres);
 
         
-        realService.listerTous();
+//        realService.listerTous();
 //        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
 //        realisateur = em.createQuery("SELECT r FROM Realisateur r").getResultList();
-        nbRealisateur = realisateur.size();
+//        nbRealisateur = realisateur.size();
 
     }
 

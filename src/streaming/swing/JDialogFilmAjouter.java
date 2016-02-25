@@ -5,13 +5,11 @@
  */
 package streaming.swing;
 
-import java.awt.Component;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
@@ -24,23 +22,41 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class JDialogFilmAjouter extends javax.swing.JDialog {
 
     private JPanelOptionFilm jpListeFilm = null;
+    private List<Pays> lp = null;
+    private List<Genre> lg = null;
+
+    @Autowired
+    private FilmService fs;
+    
+    @Autowired
+    private GenreService gs;
+    
+    @Autowired
+    private PaysService ps;
 
     public void setJpListeFilm(JPanelOptionFilm jpListeFilm) {
         this.jpListeFilm = jpListeFilm;
     }
-    
-    @Autowired
-    FilmService fs;
-    @Autowired
-    GenreService gs;
-    @Autowired
-    PaysService ps;
 
-    List<Pays> lp = ps.listerTous();
-    List<Genre> lg = gs.listerTous();
+    public void rafraichir() {
+
+        // Init les 2 listes
+        lp = ps.listerTous();
+        lg = gs.listerTous();
+        // Vide + init les 2 combos
+        jComboBox2.removeAllItems();
+        jComboBox1.removeAllItems();
+        for (Genre g : lg) {
+            jComboBox2.addItem(g.getNom());
+        }
+        for (Pays p : lp) {
+            jComboBox1.addItem(p.getNom());
+        }
+    }
 
     /**
      * Creates new form JDialogFilm
@@ -48,7 +64,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
     public JDialogFilmAjouter() {
         this.setModal(true);
         initComponents();
-        initialiserComboBox();
+//        initialiserComboBox();
 //        this.jpListeFilm = jp;
     }
 
@@ -58,7 +74,6 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
 //        initialiserComboBox();
 //        this.jpListeFilm = jp;
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,6 +89,9 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -85,7 +103,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(5, 3));
+        getContentPane().setLayout(new java.awt.GridLayout(6, 3));
 
         jLabel1.setText("Titre :");
         getContentPane().add(jLabel1);
@@ -98,10 +116,16 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField1);
 
         jLabel2.setText("Année :");
@@ -115,11 +139,34 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
         getContentPane().add(jTextField2);
+
+        jLabel3.setText("Synopsis :");
+        getContentPane().add(jLabel3);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 133, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3);
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField3);
 
         jLabel4.setText("Genre :");
         getContentPane().add(jLabel4);
@@ -132,7 +179,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel4);
@@ -156,7 +203,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel5);
@@ -172,7 +219,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel6);
@@ -185,7 +232,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel7);
@@ -206,6 +253,7 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
 
         f.setAnnee(Long.parseLong(jTextField2.getText()));
         f.setTitre(jTextField1.getText());
+        f.setSynopsis(jTextField3.getText());
         int i = jComboBox2.getSelectedIndex();
         int j = jComboBox1.getSelectedIndex();
         Genre g = lg.get(i);
@@ -218,23 +266,31 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
             Logger.getLogger(JDialogFilmAjouter.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setVisible(false);
-        jpListeFilm.rafraichitJTable();
+//        jpListeFilm.rafraichitJTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void initialiserComboBox() {
-        jComboBox2.removeAllItems();
-        jComboBox1.removeAllItems();
-        for (Genre g : lg) {
-            jComboBox2.addItem(g.getNom());
-        }
-        for (Pays p : lp) {
-            jComboBox1.addItem(p.getNom());
-        }
+//        jComboBox2.removeAllItems();
+//        jComboBox1.removeAllItems();
+//        for (Genre g : lg) {
+//            jComboBox2.addItem(g.getNom());
+//        }
+//        for (Pays p : lp) {
+//            jComboBox1.addItem(p.getNom());
+//        }
     }
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,15 +299,18 @@ public class JDialogFilmAjouter extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

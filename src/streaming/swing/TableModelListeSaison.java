@@ -25,10 +25,14 @@ public class TableModelListeSaison  extends DefaultTableModel{
     public List<Saison> saison = null;
     private int nbSaison = 0;
     
+   public void initialiser(){
+       saison = saisonService.listerTous();
+       nbSaison = saison.size();
+   }
+    
     public TableModelListeSaison(){
         setColumnIdentifiers(new String[]{"ID", "ANNEE", "NUMERO SAISON"});
-        saison = saisonService.listerTous();
-        nbSaison = saison.size();
+        
                 
     }
 

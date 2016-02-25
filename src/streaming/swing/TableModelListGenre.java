@@ -20,12 +20,17 @@ import streaming.service.GenreService;
  */
 @Component
 public class TableModelListGenre extends DefaultTableModel {
+    
     @Autowired
     GenreService gs;
+    
     private List<Genre> genre = null;
     private int nbGenre = 0;
 
-    
+    public void initialiser(){
+        genre = gs.listerTous();
+        nbGenre = genre.size();
+    }
     
     public List<Genre> getGenre() {
         return genre;
@@ -35,10 +40,10 @@ public class TableModelListGenre extends DefaultTableModel {
 
         String[] titres = new String[]{"ID", "Nom du Genre"};
         setColumnIdentifiers(titres);
-        gs.listerTous();
+//        gs.listerTous();
 //        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
 //        genre = em.createQuery("SELECT g FROM Genre g").getResultList();
-        nbGenre = genre.size();
+//        nbGenre = genre.size();
 
     }
 

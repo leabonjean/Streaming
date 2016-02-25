@@ -25,13 +25,15 @@ public class JPanelListeSaison extends javax.swing.JPanel {
     TableModelListeSaison tableModelListeSaison;
 
     public void rafraichitJtable() {
+        
+        tableModelListeSaison.initialiser();
         jtSaison.setModel(tableModelListeSaison);
         jtSaison.repaint();
     }
 
     public JPanelListeSaison() {
         initComponents();
-        rafraichitJtable();
+//        rafraichitJtable();
         
     }
 

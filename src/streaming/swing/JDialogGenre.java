@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Genre;
 import streaming.service.GenreService;
 
@@ -13,6 +14,7 @@ import streaming.service.GenreService;
  *
  * @author admin
  */
+@Component
 public class JDialogGenre extends javax.swing.JDialog {
 
     @Autowired
@@ -28,9 +30,15 @@ public class JDialogGenre extends javax.swing.JDialog {
         this.jpListeGenre = jpListeGenre;
     }
 
-    public JDialogGenre(){
+    public void initialiser(){
         this.setModal(true);
+        initComponents();
     }
+    
+//    public JDialogGenre(){
+//        this.setModal(true);
+//        initComponents();
+//    }
     
 //    public JDialogGenre(java.awt.Frame parent, boolean modal, JPanelListeGenre jp) {
 //        super(parent, modal);

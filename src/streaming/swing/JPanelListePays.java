@@ -25,16 +25,16 @@ public class JPanelListePays extends javax.swing.JPanel {
     TableModelListePays tableModelListePays;
     
     public void rafraichitJtable() {
+        tableModelListePays.initialiser();
         jtPays.setModel(tableModelListePays);
         jtPays.repaint();
+//        initComponents();
     }
 
-    /**
-     * Creates new form JPanelListePays
-     */
+    
     public JPanelListePays() {
         initComponents();
-        rafraichitJtable();
+//        rafraichitJtable();
     }
 
     /**
@@ -97,6 +97,7 @@ public class JPanelListePays extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jdPays.initialiser();
         jdPays.setJpListePays(this);
         jdPays.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

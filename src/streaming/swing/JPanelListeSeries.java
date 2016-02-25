@@ -45,11 +45,12 @@ public class JPanelListeSeries extends javax.swing.JPanel {
     public JPanelListeSeries() {
         
         initComponents();
-        rafraichitJtable();
+//        rafraichitJtable();
     }
 
     
     public void rafraichitJtable() {
+        tableModelListeSerie.initialiser();
         jtSerie.setModel(tableModelListeSerie);
         jtSerie.repaint();
     }

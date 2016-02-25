@@ -27,13 +27,14 @@ public class JPanelListeRealisateur extends javax.swing.JPanel {
     JDialogRealisateur jDialogRealisateur;
 
     public void rafraichitJTable() {
+        tableModelListRealisateur.initialiser();
         jtReal.setModel(tableModelListRealisateur);
         jtReal.repaint();
     }
 
     public JPanelListeRealisateur() {
         initComponents();
-        rafraichitJTable();
+//        rafraichitJTable();
     }
 
     /**

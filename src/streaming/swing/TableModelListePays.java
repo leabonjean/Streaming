@@ -25,10 +25,14 @@ public class TableModelListePays extends DefaultTableModel {
     private List<Pays> pays = null;
     private int nbPays = 0;
 
-    public TableModelListePays() {
-        setColumnIdentifiers(new String[]{"ID", "PAYS"});
+    public void initialiser(){
         pays = paysService.listerTous();
         nbPays = pays.size();
+    }
+    
+    public TableModelListePays() {
+        setColumnIdentifiers(new String[]{"ID", "PAYS"});
+
     }
 
     @Override
